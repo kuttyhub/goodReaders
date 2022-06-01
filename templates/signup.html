@@ -1,0 +1,36 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+
+<body>
+    {% include 'header.html' %}
+    <h2> Good Reader Login </h2>
+    {% if errors %}
+    <p>Errors - Please rectify it</p>
+    <ul>
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" name="name">
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" value="{{email}}">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password">
+        <input type="submit" value="sign Up">
+    </form>
+</body>
+
+</html>

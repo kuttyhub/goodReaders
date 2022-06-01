@@ -1,3 +1,4 @@
+{%load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +10,42 @@
 </head>
 
 <body>
+    {% include 'header.html' %}
+
     <h2>Good Readers Checkout Page</h2>
+
+    {% if errors %}
+    <p>Errors - Please rectify it</p>
+    <ul>
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>Shipping Detials</p>
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="{{name}}">
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" value="{{email}}">
+        <label for="address">Address:</label>
+        <input type="text" name="address" id="address" value="{{address}}">
+        <label for="city">City:</label>
+        <input type="text" name="city" id="city" value="{{city}}">
+        <label for="pincode">pincode:</label>
+        <input type="text" name="pincode" id="pincode" value="{{pincode}}">
+
+        <hr>
+        <p>Prodect Detials</p>
+        <label for="product">Product Name:</label>
+        <input type="text" name="product" id="product" value="{{product}}">
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" id="quantity" value="{{quantity}}">
+
+        <button type="submit">Submit</button>
+    </form>
 </body>
 
 </html>
